@@ -1,0 +1,134 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+<title>Attendance Report</title>
+
+<script type="text/javascript">
+{
+$(document).ready(function() 
+{ 
+	var sem = $('#sem').val();
+
+	var department = $('#department').val();
+	
+$("#sem").change(function() {
+	
+	alert ("Fetching data");
+	var table="<html><table border=\"1px\">" ;
+
+	  table=table+"<th> Registration No</th><th>Name</th><th>Subject</th><th>percent</th>";
+
+	  $.ajax({
+
+	        type: "GET",
+	                    url: 'ConsolidatedReportController',
+	                    data : {
+	                    	sem : $('#sem').val(),
+	            			department : $('#department').val(),
+	                    },
+	                    dataType: 'json',
+	                    success : function(json) {
+
+	                        var info1=json.aaData;
+
+	                      $.each(info1, function(index, element) {
+	                          //var info = element.JsonData;
+
+	                          table=table+"<tr>";
+
+	                              //$.each(info, function(index, element) {
+										var arr = element.text.split("*");
+										
+	                                  table=table+"<td>" + arr[0] +"</td>"
+	                                  +"<td>" +	arr[1] +"</td>" 
+	                                  +"<td>" + arr[2] +"</td>"
+	                                  +"<td>" + element.value +"</td>" ;
+	                                //});
+	                              table=table+"</tr>";
+
+	                      });
+	                      table=table+="</table></html>";
+	                      $("tbl").empty();
+	                      $("#tbl").html(table);
+	                    },
+	                    async: false,
+	                    global: false,
+	                    error: function () {
+	                       alert("No data found");
+	                    }
+	                });
+
+      
+  });
+});
+    
+}
+</script>
+</head>
+
+<body>
+
+<%@include file="header.jsp" %>
+<div class="container">
+
+ <form class="form-inline" action="" method="post">
+ 
+ <p align="center"> <h3>Attendance Report</h3> </p>
+ <br>
+ <br>
+ <div class="form-group">
+    	<label for="department" class="col-sm-5 control-label">Department</label>
+    	<div class="col-sm-5">
+      <select class="form-control" id="department" name="department">
+       <option value="select">select</option>
+        <option>CS</option>
+        <option>IS</option>
+        <option>E&C</option>
+        <option>E&E</option>
+      </select>
+      </div>
+      </div>
+   	
+   	<div class="form-group">
+    	<label for="sem" class="col-sm-4 control-label">Semester</label>
+    	<div class="col-sm-4">
+      <select class="form-control" id="sem" name="sem" >
+      <option value="select">select</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+      </select>
+   	</div>
+   	</div>
+   	
+  
+
+<br>
+<br>
+<br>
+
+
+	
+
+<div id="tbl"  width="100%" align="center">
+
+<a href="/sample/success.jsp">Back</a>
+</div>
+   	
+   	</div>
+</form>
+</body>
+</html>

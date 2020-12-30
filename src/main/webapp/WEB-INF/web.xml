@@ -1,0 +1,69 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  
+  <servlet>
+		<servlet-name>LoginController</servlet-name>
+		<servlet-class>com.candid.LoginController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AddStudentController</servlet-name>
+		<servlet-class>com.candid.AddStudentController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>json_source</servlet-name>
+		<servlet-class>com.candid.json_source</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>MarkAttendanceController</servlet-name>
+		<servlet-class>com.candid.MarkAttendanceController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetAttendanceDetailsController</servlet-name>
+		<servlet-class>com.candid.GetAttendanceDetailsController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LogoutServletController</servlet-name>
+		<servlet-class>com.candid.LogoutServletController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ConsolidatedReportController</servlet-name>
+		<servlet-class>com.candid.ConsolidatedReportController</servlet-class>
+	</servlet>
+	
+	
+	<servlet-mapping>
+		<servlet-name>LoginController</servlet-name>
+		<url-pattern>/LoginController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MarkAttendanceController</servlet-name>
+		<url-pattern>/MarkAttendanceController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddStudentController</servlet-name>
+		<url-pattern>/AddStudentController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>json_source</servlet-name>
+		<url-pattern>/json_source</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetAttendanceDetailsController</servlet-name>
+		<url-pattern>/GetAttendanceDetailsController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LogoutServletController</servlet-name>
+		<url-pattern>/LogoutServletController</url-pattern>
+	</servlet-mapping>
+	
+	    <servlet-mapping>
+		<servlet-name>ConsolidatedReportController</servlet-name>
+		<url-pattern>/ConsolidatedReportController</url-pattern>
+	</servlet-mapping>
+	    
+  
+</web-app>
